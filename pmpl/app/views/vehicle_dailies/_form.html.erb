@@ -1,0 +1,50 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2><%= page %> Andamento Diario</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		
+		<p class="breadcrumb"><a href="<%= vehicle_dailies_url %>">Andamento Diario</a> &raquo; <strong><%= page %></strong></p>
+
+		<%= form_for(@vehicle_daily)  do |f| %>
+		  <% if @vehicle_daily.errors.any? %>
+		    <div class="message errormsg">
+		      <p>Não foi possível salvar devido aos seguintes erros:</p>
+		
+		      <% @vehicle_daily.errors.full_messages.each do |msg| %>
+		        <p><%= msg %></p>
+		      <% end %>
+		    </div>
+		  <% end %>  
+		    <p>
+  			  <%= f.label :placa %><br />
+  			  <%= f.select :vehicle_id, @vehicles, :prompt => "Selecione", :class => "styled" %>
+  			</p>
+        <p>
+          <%= f.label :km %><br />
+          <%= f.text_field :km %>
+        </p>
+        <p>
+          <%= f.label :hour, "Horas " %><br />
+          <%= f.text_field :hour %>
+        </p>
+        <p>
+          <%= f.label :data %><br />
+          <%= f.date_select :date, :order => [:day, :month, :year] %>
+        </p>
+		  <p>
+		    <%= f.submit page, :class => "submit small" %>
+		  </p>
+		<% end %>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+		
+</div>		<!-- .block ends -->

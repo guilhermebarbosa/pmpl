@@ -1,0 +1,25 @@
+<p>Troca de Oleo se aproximando</p>
+
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+		  <th style="padding:5px">Local</th>
+      <th style="padding:5px">Placa</th>
+      <th style="padding:5px">Oleo</th>
+      <th style="padding:5px">Km Inicial</th>
+      <th style="padding:5px">Km Atual</th>
+      <th style="padding:5px">Km Final</th>
+    </tr>
+	</thead>
+	
+	<tbody>
+    <tr>
+      <td style="padding:5px"><%= @historic.place_name %></td>
+      <td style="padding:5px"><%= @historic.license_plate %></td>
+      <td style="padding:5px"><%= @historic.name %></td>
+      <td style="padding:5px"><%= @historic.km_initial %></td>
+      <td style="padding:5px"><%= @historic.km_atual %></td>
+      <td style="padding:5px"><%= @historic.km + @historic.km_initial %></td>
+    </tr>
+	</tbody>
+</table>

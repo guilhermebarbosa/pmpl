@@ -1,0 +1,72 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2><%= page %> Histórico Maquina</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		
+		<p class="breadcrumb"><a href="<%= machine_historics_url %>">Histórico Maquina</a> &raquo; <strong><%= page %></strong></p>
+
+		<%= form_for(@machine_historic)  do |f| %>
+		  <% if @machine_historic.errors.any? %>
+		    <div class="message errormsg">
+		      <p>Não foi possível salvar devido aos seguintes erros:</p>
+		
+		      <% @machine_historic.errors.full_messages.each do |msg| %>
+		        <p><%= msg %></p>
+		      <% end %>
+		    </div>
+		  <% end %>
+		  <%
+		  if page == "Alterar"
+		  %>
+		  <p>
+			  <%= f.label :placa %><br />
+			  <%= f.label @machine_historic.vehicle.license_plate %>
+			</p>
+			<%
+		  else
+			%>
+		    <p>
+  			  <%= f.label :placa %><br />
+  			  <%= f.select :vehicle_id, @vehicles, :prompt => "Selecione", :class => "styled" %>
+  			</p>
+  		<%
+		  end
+  		%>
+  		<%
+		  if page == "Alterar"
+		  %>
+		  <p>
+			  <%= f.label :oleo %><br />
+			  <%= f.label @machine_historic.oil.name %>
+			</p>
+			<%
+		  else
+			%>
+		    <p>
+  			  <%= f.label :oleo %><br />
+  			  <%= f.select :oil_id, @oils, :prompt => "Selecione", :class => "styled" %>
+  			</p>
+  		<%
+		  end
+  		%>
+        <p>
+          <%= f.label :observaçao %><br />
+          <%= f.text_area :observation %>
+        </p>
+		  <p>
+		    <%= f.submit page, :class => "submit small" %>
+		  </p>
+		<% end %>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+		
+</div>		<!-- .block ends -->

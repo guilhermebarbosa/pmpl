@@ -1,0 +1,60 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Visualizar Oleo</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		<p>
+      <b>Placa:</b>
+      <%= @machine_historic.vehicle.license_plate %>
+    </p>
+		<p>
+		  <b>Oleo:</b><br>
+		  <%=h @machine_oil.oil.name %> <br>
+	    - Km: <%=h @machine_oil.km %> <br>
+	    - Hora: <%=h @machine_oil.hour %> <br>
+	    - Hora Aviso: <%=h @machine_oil.hour_warning %> <br>
+		</p> 
+		
+		<p>
+		  <b>Hora Inicial:</b>
+		  <%= @machine_historic.hour_initial %>
+		</p>
+		
+		<p>
+		  <b>Hora Aviso:</b>
+		  <%= @machine_historic.hour_initial + @machine_oil.hour - @machine_oil.hour_warning %> 
+		</p>
+		
+		<p>
+		  <b>Hora Final:</b>
+		  <%= @machine_historic.hour_initial + @machine_oil.hour %>
+		</p>
+		
+    <p>
+      <b>Observaçao:</b>
+      <%= @machine_historic.observation %>
+    </p>
+    
+    <% unless @machine_historic.date.blank? %>
+    <p>
+      <b>Data:</b>
+      <%= I18n.l @machine_historic.date %>
+    </p>
+    <% end %>
+    
+    <p>
+      <b>Status:</b>
+      <%= @machine_historic.status %>
+    </p>
+    
+	</div>		<!-- .block_content ends -->
+
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+
+</div>		<!-- .block ends -->

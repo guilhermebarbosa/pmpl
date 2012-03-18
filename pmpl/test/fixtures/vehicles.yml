@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  license_plate: MyString
+  name: MyString
+  brand: MyString
+  model: MyString
+  year: 1
+  km_initial: 1.5
+  km_end: 1.5
+
+two:
+  license_plate: MyString
+  name: MyString
+  brand: MyString
+  model: MyString
+  year: 1
+  km_initial: 1.5
+  km_end: 1.5

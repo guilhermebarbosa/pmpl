@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  vehicle_id: 
+  oil: MyString
+  observation: MyText
+  km_initial: 1.5
+  km_end: 1.5
+  date: 2011-08-20
+  status: MyString
+
+two:
+  vehicle_id: 
+  oil: MyString
+  observation: MyText
+  km_initial: 1.5
+  km_end: 1.5
+  date: 2011-08-20
+  status: MyString

@@ -1,0 +1,36 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Visualizar Oleo</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		<p>
+      <b>Placa:</b>
+      <%= @vehicle_daily.vehicle.license_plate %>
+    </p>
+
+    <p>
+      <b>Km:</b>
+      <%= @vehicle_daily.km %>
+    </p>
+    
+    <p>
+      <b>Horas:</b>
+      <%= @vehicle_daily.hour %>
+    </p>
+
+    <p>
+      <b>Data:</b>
+      <%= I18n.l @vehicle_daily.date %>
+    </p>
+    
+	</div>		<!-- .block_content ends -->
+
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+
+</div>		<!-- .block ends -->

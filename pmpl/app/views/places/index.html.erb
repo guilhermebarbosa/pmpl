@@ -1,0 +1,52 @@
+
+<div class="block">
+
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Local</h2>
+		
+		<ul>
+			<li><a href="<%=new_place_path%>">Novo Local</a></li>
+			<li><%= link_to "Importar", places_import_path %></li>
+		</ul>
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+	
+		<form action="" method="post">
+		
+			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+			
+				<thead>
+					<tr>
+					  <th style="width:1px"></th>
+            <th>Local</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+				</thead>
+				
+				<tbody>
+				  <% @places.each do |place| %>
+            <tr>
+              <td style="width:1px"></td>
+              <td><%= place.name %></td>
+              <td><%= link_to 'Visualizar', place %></td>
+              <td><%= link_to 'Editar', edit_place_path(place) %></td>
+              <td><%= link_to 'Excluir', place, :confirm => 'Tem certeza que deseja excluir?', :method => :delete %></td>
+            </tr>
+          <% end %>
+				</tbody>
+				
+			</table>
+			
+		</form>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+</div>		<!-- .block ends -->

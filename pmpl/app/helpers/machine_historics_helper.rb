@@ -1,0 +1,2 @@
+module MachineHistoricsHelper
+end

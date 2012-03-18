@@ -1,0 +1,59 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Visualizar Oleo</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		<p>
+      <b>Placa:</b>
+      <%= @vehicle_historic.vehicle.license_plate %>
+    </p>
+		<p>
+		  <b>Oleos:</b><br>
+		  <%=h @vehicle_historic.oil.name %> <br>
+	    - Km: <%=h @vehicle_historic.oil.carmodel_oils[0].km %> <br>
+	    - Km Aviso: <%=h @vehicle_historic.oil.carmodel_oils[0].km_warning %> <br>
+		</p> 
+		
+		<p>
+		  <b>Km Inicial:</b>
+		  <%= @vehicle_historic.km_initial %>
+		</p>
+		
+		<p>
+		  <b>Km Aviso:</b>
+		  <%= @vehicle_historic.km_initial + @vehicle_historic.oil.carmodel_oils[0].km - @vehicle_historic.oil.carmodel_oils[0].km_warning %>
+		</p>
+		
+		<p>
+		  <b>Km Final:</b>
+		  <%= @vehicle_historic.km_initial + @vehicle_historic.oil.carmodel_oils[0].km %>
+		</p>
+		
+    <p>
+      <b>Observaçao:</b>
+      <%= @vehicle_historic.observation %>
+    </p>
+    
+    <% unless @vehicle_historic.date.blank? %>
+    <p>
+      <b>Data:</b>
+      <%= I18n.l @vehicle_historic.date %>
+    </p>
+    <% end %>
+    
+    <p>
+      <b>Status:</b>
+      <%= @vehicle_historic.status %>
+    </p>
+    
+	</div>		<!-- .block_content ends -->
+
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+
+</div>		<!-- .block ends -->

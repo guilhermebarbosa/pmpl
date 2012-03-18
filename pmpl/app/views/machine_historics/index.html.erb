@@ -1,0 +1,155 @@
+<div class="block">
+
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Histórico Maquina</h2>
+		
+		<ul>
+			<li><a href="<%=new_machine_historic_path%>">Novo Histórico</a></li>
+		</ul>
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+	
+		<form action="" method="post">
+		
+		<h2>Troca necessaria</h2>
+		
+			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+			
+				<thead>
+					<tr>
+					  <th></th>
+					  <th>Local</th>
+            <th>Placa</th>
+            <th>Oleo</th>
+            <th>Hora Inicial</th>
+            <th>Hora Atual</th>
+            <th>Hora Final</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+				</thead>
+				
+				<tbody>
+				<% @machine_historics_exchange.each do |machine_historic| %>
+				  <%
+				  if machine_historic.km.blank?
+				    @hour_atual = machine_historic.hour_sum
+				  else
+				    @hour_atual = machine_historic.km_sum.to_f * machine_historic.hour.to_f / machine_historic.km.to_f + machine_historic.hour_sum.to_f
+				  end
+				  %>
+          <tr>
+            <td><%=image_tag("red.png")%></td>
+            <td><%= machine_historic.place_name %></td>
+            <td><%= machine_historic.license_plate %></td>
+            <td><%= machine_historic.name %></td>
+            <td><%= machine_historic.hour_initial %></td>
+            <td><%= @hour_atual %></td>
+            <td><%= machine_historic.hour + machine_historic.hour_initial %></td>
+            <td><%= link_to 'Troca efetuada?', machine_historic_exchange_path(machine_historic) %></td>
+            <td><%= link_to 'Visualizar', machine_historic %></td>
+            <td><%= link_to 'Editar', edit_machine_historic_path(machine_historic) %></td>
+            <td><%= link_to 'Excluir', machine_historic, :confirm => 'Tem certeza que deseja excluir?', :method => :delete %></td>
+          </tr>
+        <% end %>
+				</tbody>
+			</table>
+			
+		  <h2>Troca se aproximando</h2>
+
+  			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+
+  				<thead>
+  					<tr>
+  					  <th></th>
+  					  <th>Local</th>
+              <th>Placa</th>
+              <th>Oleo</th>
+              <th>Hora Inicial</th>
+              <th>Hora Atual</th>
+              <th>Hora Final</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+  				</thead>
+
+  				<tbody>
+  				<% @machine_historics_warning.each do |machine_historic| %>
+  				  <%
+  				  if machine_historic.km.blank?
+  				    @hour_atual = machine_historic.hour_sum
+  				  else
+  				    @hour_atual = machine_historic.km_sum.to_f * machine_historic.hour.to_f / machine_historic.km.to_f + machine_historic.hour_sum.to_f
+  				  end
+  				  %>
+            <tr>
+              <td><%=image_tag("yellow.png")%></td>
+              <td><%= machine_historic.place_name %></td>
+              <td><%= machine_historic.license_plate %></td>
+              <td><%= machine_historic.name %></td>
+              <td><%= machine_historic.hour_initial %></td>
+              <td><%= @hour_atual %></td>
+              <td><%= machine_historic.hour + machine_historic.hour_initial %></td>
+              <td><%= link_to 'Visualizar', machine_historic %></td>
+              <td><%= link_to 'Editar', edit_machine_historic_path(machine_historic) %></td>
+              <td><%= link_to 'Excluir', machine_historic, :confirm => 'Tem certeza que deseja excluir?', :method => :delete %></td>
+            </tr>
+          <% end %>
+  				</tbody>
+  			</table>
+  			
+  		  <h2>Andamento Diario</h2>
+
+    			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+
+    				<thead>
+    					<tr>
+    					  <th></th>
+    					  <th>Local</th>
+                <th>Placa</th>
+                <th>Oleo</th>
+                <th>Hora Inicial</th>
+                <th>Hora Atual</th>
+                <th>Hora Final</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+    				</thead>
+
+    				<tbody>
+    				<% @machine_historics_daily.each do |machine_historic| %>
+    				  <%
+    				  if machine_historic.km.blank?
+    				    @hour_atual = machine_historic.hour_sum
+    				  else
+    				    @hour_atual = machine_historic.km_sum.to_f * machine_historic.hour.to_f / machine_historic.km.to_f + machine_historic.hour_sum.to_f
+    				  end
+    				  %>
+              <tr>
+                <td><%=image_tag("green.png")%></td>
+                <td><%= machine_historic.place_name %></td>
+                <td><%= machine_historic.license_plate %></td>
+                <td><%= machine_historic.name %></td>
+                <td><%= machine_historic.hour_initial %></td>
+                <td><%= @hour_atual %></td>
+                <td><%= machine_historic.hour + machine_historic.hour_initial %></td>
+                <td><%= link_to 'Visualizar', machine_historic %></td>
+                <td><%= link_to 'Editar', edit_machine_historic_path(machine_historic) %></td>
+                <td><%= link_to 'Excluir', machine_historic, :confirm => 'Tem certeza que deseja excluir?', :method => :delete %></td>
+              </tr>
+            <% end %>
+    				</tbody>
+    			</table>
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+</div>		<!-- .block ends -->

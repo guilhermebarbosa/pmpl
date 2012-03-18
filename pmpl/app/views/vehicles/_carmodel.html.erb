@@ -1,0 +1,6 @@
+<option value="">Selecione</option>
+<% if !@carmodels.blank? %>
+  <% @carmodels.each do |item| %>
+    <option value="<%= item.id %>"><%= item.name  %></option>
+  <% end %>
+<% end %>

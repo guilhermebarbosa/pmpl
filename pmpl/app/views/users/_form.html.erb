@@ -1,0 +1,54 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+
+		<h2>Cadastrar Usuário</h2>
+
+	</div>		<!-- .block_head ends -->
+
+	<div class="block_content">
+
+		<%= form_for(@user) do |f| %>
+		  <% if @user.errors.any? %>
+		    <div class="message errormsg">
+		      <p>Não foi possível salvar devido aos seguintes erros:</p>
+
+		      <% @user.errors.full_messages.each do |msg| %>
+		        <p><%= msg %></p>
+		      <% end %>
+		    </div>
+		  <% end %>
+
+		<p>
+		  <%= f.label :name %><br />
+	      <%= f.text_field :name, :class => "text small" %>
+	    </p>
+		  <p>
+		    <%= f.label :email %><br />
+		    <%= f.text_field :email, :class => "text small" %>
+		  </p>
+		  <p>
+		    <%= f.label :login %><br />
+		    <%= f.text_field :login, :class => "text small" %>
+		  </p>
+		  <p>
+		    <%= f.label :password %><br />
+		    <%= f.password_field :password, :class => "text small" %>
+		  </p>
+		  <p>
+		    <%= f.label :password_confirmation %><br />
+		    <%= f.password_field :password_confirmation, :class => "text small" %>
+		  </p>
+
+		    <p>
+		      <%= f.submit page, :class => "submit small" %>
+		    </p>
+		<% end %>
+
+	</div>		<!-- .block_content ends -->
+
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+
+</div>		<!-- .block ends -->

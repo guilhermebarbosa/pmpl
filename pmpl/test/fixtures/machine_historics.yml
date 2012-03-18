@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  vehicle: 
+  oil: 
+  hour_initial: 1.5
+  date: 2012-03-17
+  observation: MyText
+  email: false
+  status: MyString
+
+two:
+  vehicle: 
+  oil: 
+  hour_initial: 1.5
+  date: 2012-03-17
+  observation: MyText
+  email: false
+  status: MyString

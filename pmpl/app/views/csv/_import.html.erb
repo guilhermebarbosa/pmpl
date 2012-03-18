@@ -1,0 +1,31 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2><%= page %></h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+	
+	  <div class="message errormsg" style="display:<%= (@notice == '' ?'none':'block') %>" ><p><%= @notice %></p></div>
+		
+	  <%= form_for :upload, :html => { :multipart => true } do |f| -%>
+      <p>
+        Planilha modelo: <%= link_to "Modelo", Rails.root.join('public', "planilhas", "brand.csv").to_s %> 
+      </p>
+      <p>
+        <%= f.file_field :csv %>
+      </p>
+      <p>
+        <%= f.submit "Importar", :class => "submit small" %>
+      </p>
+    <% end -%>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+		
+</div>		<!-- .block ends -->

@@ -1,0 +1,62 @@
+
+<div class="block">
+
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Veiculo</h2>
+		
+		<ul>
+			<li><a href="<%=new_vehicle_path%>">Novo Veiculo</a></li>
+			<% if false %>
+			<li><%= link_to "Importar", vehicles_import_path %></li>
+		  <% end %>
+		</ul>
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+	
+		<form action="" method="post">
+		
+			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+			
+				<thead>
+					<tr>
+					  <th style="width:1px"></th>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Local</th>
+            <th>Ano</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+				</thead>
+				
+				<tbody>
+				  <% @vehicles.each do |vehicle| %>
+          <tr>
+            <td style="width:1px"></td>
+            <td><%= vehicle.license_plate %></td>
+            <td><%= vehicle.brand.name %></td>
+            <td><%= vehicle.carmodel.name %></td>
+            <td><%= vehicle.place.name %></td>
+            <td><%= vehicle.year %></td>
+            <td><%= link_to 'Visualizar', vehicle %></td>
+            <td><%= link_to 'Editar', edit_vehicle_path(vehicle) %></td>
+            <td><%= link_to 'Excluir', vehicle, :confirm => 'Tem certeza que deseja excluir?', :method => :delete %></td>
+          </tr>
+        <% end %>
+				</tbody>
+				
+			</table>
+			
+		</form>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+</div>		<!-- .block ends -->

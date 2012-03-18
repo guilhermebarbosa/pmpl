@@ -1,0 +1,58 @@
+<div class="block">
+
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Andamento Diario</h2>
+		
+		<ul>
+			<li><a href="<%=new_vehicle_daily_path%>">Novo Andamento Diario</a></li>
+		</ul>
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+	
+		<form action="" method="post">
+		
+			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+			
+				<thead>
+					<tr>
+					  <th style="width:1px"></th>
+            <th>Placa</th>
+            <th>Km</th>
+            <th>Horas</th>
+            <th>Data</th>
+            <th></th>
+            <th></th>
+          </tr>
+				</thead>
+				
+				<tbody>
+				<% @vehicle_dailies.each do |vehicle_daily| %>
+          <tr>
+            <td style="width:1px"></td>
+            <td><%= vehicle_daily.vehicle.license_plate %></td>
+            <td><%= vehicle_daily.km %></td>
+            <td><%= vehicle_daily.hour %></td>
+            <td><%= I18n.l vehicle_daily.date %></td>
+            <td><%= link_to 'Visualizar', vehicle_daily %></td>
+            <td><%= link_to 'Editar', edit_vehicle_daily_path(vehicle_daily) %></td>
+          </tr>
+        <% end %>
+        
+        
+				</tbody>
+				
+			</table>
+			
+			<%= will_paginate @vehicle_dailies, :previous_label => "&laquo; Anterior", :next_label => "Próxima &raquo;" %>
+			
+		</form>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+</div>		<!-- .block ends -->

@@ -1,0 +1,86 @@
+<div class="block">
+
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Veiculo Historico</h2>
+	</div>		<!-- .block_head ends -->
+	
+	<form action="" method="post">
+	
+	<div class="block_content">
+	
+	    <% if @report_vehicle_historics.vehicle_historics.blank? %>
+	      
+	      <p>
+	      Nenhum historico encontrado.
+	      </p>
+	      
+	    <% else %>
+	
+		    <% @report_vehicle_historics.vehicle_historics.each do |report_vehicle_historic| %>
+		    
+  		  <% if report_vehicle_historic.vehicle_id != @veiculo_antigo %>
+			
+  			<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+			
+  				<thead>
+  					<tr>
+  					  <th style="width:1px"></th>
+              <th>Placa</th>
+              <th>Local</th>
+              <th>Oleo</th>
+              <th>Km Inicial</th>
+              <th>Km Atual</th>
+              <th>Km Final</th>
+              <th>Data Troca</th>
+              <th>Status</th>
+            </tr>
+  				</thead>
+				
+  				<tbody>
+				
+        <% end %>
+				
+              <tr>
+                <td style="width:1px"></td>
+                <td><%= report_vehicle_historic.license_plate %></td>
+                <td><%= report_vehicle_historic.place_name %></td>
+                <td><%= report_vehicle_historic.name %></td>
+                <td><%= report_vehicle_historic.km_initial %></td>
+                <td><%= report_vehicle_historic.km_atual %></td>
+                <td><%= report_vehicle_historic.km + report_vehicle_historic.km_initial %></td>
+                <td><% if !report_vehicle_historic.date.blank? %> <%= I18n.l report_vehicle_historic.date %> <% end %></td>
+                <td><%= report_vehicle_historic.status %></td>
+              </tr>
+			
+  			<% @veiculo_antigo = report_vehicle_historic.vehicle_id %>
+			
+  			<% if report_vehicle_historic.vehicle_id != @veiculo_antigo %>
+			
+  			    </tbody>
+
+  		    </table>
+		
+  		  <% end %>
+		
+  			<% end %>
+			
+  			</tbody>
+
+  		</table>
+  		
+  		<% end %>
+  		
+  		<p>
+        <a class="submit small" href="<%=new_report_vehicle_historic_url%>">Nova Busca</a>
+      </p>
+		
+	</div>		<!-- .block_content ends -->
+	
+	</form>
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+</div>		<!-- .block ends -->

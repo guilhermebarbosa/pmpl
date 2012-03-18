@@ -1,0 +1,33 @@
+<p>Troca de Oleo se aproximando</p>
+
+<% 
+if @historic.km.blank?
+  @hour_atual = @historic.hour_sum
+else
+  @hour_atual = (@historic.km_sum.to_f * @historic.hour.to_f / @historic.km.to_f) + @historic.hour_sum.to_f 
+end
+%>
+
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+		  <th style="padding:5px">Local</th>
+      <th style="padding:5px">Placa</th>
+      <th style="padding:5px">Oleo</th>
+      <th style="padding:5px">Hora Inicial</th>
+      <th style="padding:5px">Hora Atual</th>
+      <th style="padding:5px">Hora Final</th>
+    </tr>
+	</thead>
+	
+	<tbody>
+    <tr>
+      <td style="padding:5px"><%= @historic.place_name %></td>
+      <td style="padding:5px"><%= @historic.license_plate %></td>
+      <td style="padding:5px"><%= @historic.name %></td>
+      <td style="padding:5px"><%= @historic.hour_initial %></td>
+      <td style="padding:5px"><%= @hour_atual %></td>
+      <td style="padding:5px"><%= @historic.hour + @historic.hour_initial %></td>
+    </tr>
+	</tbody>
+</table>

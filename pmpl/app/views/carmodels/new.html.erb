@@ -1,0 +1,93 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Cadastrar Modelo</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		
+		<p class="breadcrumb"><a href="<%= carmodels_url %>">Modelo</a> &raquo; <strong>Cadastrar</strong></p>
+
+		<%= form_for(@carmodel)  do |f| %>
+		  <% if @carmodel.errors.any? %>
+		    <div class="message errormsg">
+		      <p>Não foi possível salvar devido aos seguintes erros:</p>
+		
+		      <% @carmodel.errors.full_messages.each do |msg| %>
+		        <p><%= msg %></p>
+		      <% end %>
+		    </div>
+		  <% end %>  
+		    <p>
+  			  <%= f.label :marca %><br />
+  			  <%= f.select :brand_id, @brands, :prompt => "Selecione", :class => "styled" %>
+  			</p>
+        <p>
+          <%= f.label :modelo %><br />
+          <%= f.text_field :name %>
+        </p>
+        <p>
+  			  <%= f.label :tipo %><br />
+  			  <%= f.select :carmodel_type, Carmodel::Type, :prompt => "Selecione", :class => "styled" %>
+  			</p>
+  			
+        <div class="oils">
+  			  <b>Oleos</b><br />
+  			  <% @count_oil = 0 %>
+  			  <% f.fields_for :carmodel_oils do |builder| %>
+            <div class="block">
+            	<div class="block_head">
+            		<div class="bheadl"></div>
+            		<div class="bheadr"></div>
+            		
+            		<%= builder.check_box("oil_id", {:class => "checkbox oil_check"}, @oils[@count_oil][1] , @carmodel.oils.include?(builder)) %>
+                <%= @oils[@count_oil][0] %>
+
+            	</div>		<!-- .block_head ends -->
+
+            	<div class="block_content" style="display:none">
+            	  
+            	  <p>
+                  <%= f.label :km %><br />
+                  <%= builder.text_field("km")  %>
+                </p>
+                
+                <p>
+          		    <%= f.label :hour, "Horas" %><br />
+          		    <%= builder.text_field("hour")  %>
+        		    </p>
+                
+                <p class="left">
+                  <%= f.label :km_warning, "Km Aviso" %><br />
+                  <%= builder.text_field("km_warning")  %>
+                </p>
+                
+                <p>
+          		    <%= f.label :hour_warning, "Horas Aviso" %><br />
+          		    <%= builder.text_field("hour_warning")  %>
+          		  </p>
+            	  
+            	</div>		<!-- .block_content ends -->
+
+            	<div class="bendl"></div>
+            	<div class="bendr"></div>
+
+            </div>		<!-- .block ends -->
+            
+            <% @count_oil = @count_oil + 1 %>
+          <% end %>
+  			</div>
+  			<p>
+		      <%= f.submit "Cadastrar", :class => "submit small" %>
+		    </p>
+		<% end %>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+		
+</div>		<!-- .block ends -->

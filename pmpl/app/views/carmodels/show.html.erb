@@ -1,0 +1,45 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2>Visualizar Modelo</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+	
+    <p>
+      <b>Marca:</b>
+      <%= @carmodel.brand.name %>
+    </p>
+    
+    <p>
+      <b>Nome:</b>
+      <%= @carmodel.name %>
+    </p>
+    
+    <p>
+      <b>Tipo:</b>
+      <%= @carmodel.carmodel_type %>
+    </p>
+    
+    <% unless @carmodel.carmodel_oils.empty? %>
+		  <p>
+		    <b>Oleos:</b><br>
+		      <% @carmodel.carmodel_oils.each do |carmodel| %>
+		        <%=h carmodel.oil.name %> <br>
+		        - Km: <%=h carmodel.km %> <br>
+		        - Km Aviso: <%=h carmodel.km_warning %> <br>
+		        - Horas: <%=h carmodel.hour %> <br>
+		        - Horas Aviso: <%=h carmodel.hour_warning %> <br>
+		      <% end %>
+		  </p> 
+		<% end %>
+    
+	</div>		<!-- .block_content ends -->
+
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+
+</div>		<!-- .block ends -->

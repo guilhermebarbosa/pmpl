@@ -1,0 +1,54 @@
+<div class="block">
+	<div class="block_head">
+		<div class="bheadl"></div>
+		<div class="bheadr"></div>
+		
+		<h2><%= page %> Veiculo</h2>
+		
+	</div>		<!-- .block_head ends -->
+	
+	<div class="block_content">
+		
+		<p class="breadcrumb"><a href="<%= vehicles_url %>">Veiculo</a> &raquo; <strong><%= page %></strong></p>
+
+		<%= form_for(@vehicle)  do |f| %>
+		  <% if @vehicle.errors.any? %>
+		    <div class="message errormsg">
+		      <p>Não foi possível salvar devido aos seguintes erros:</p>
+		
+		      <% @vehicle.errors.full_messages.each do |msg| %>
+		        <p><%= msg %></p>
+		      <% end %>
+		    </div>
+		  <% end %>
+		  <p>
+			  <%= f.label :marca %><br />
+			  <%= f.select :brand_id, @brands, :prompt => "Selecione", :class => "styled" %>
+			</p>
+			<p>
+			  <%= f.label :modelo %><br />
+        <%= f.select :carmodel_id, @carmodels, :prompt => "Selecione", :class => "styled" %>
+			</p>
+			<p>
+			  <%= f.label :local %><br />
+        <%= f.select :place_id, @places, :prompt => "Selecione", :class => "styled" %>
+			</p>
+		  <p>
+        <%= f.label :Placa %><br />
+        <%= f.text_field :license_plate %>
+      </p>
+      <p>
+        <%= f.label :ano %><br />
+        <%= f.text_field :year %>
+      </p>
+		  <p>
+		    <%= f.submit page, :class => "submit small" %>
+		  </p>
+		<% end %>
+		
+	</div>		<!-- .block_content ends -->
+	
+	<div class="bendl"></div>
+	<div class="bendr"></div>
+		
+</div>		<!-- .block ends -->
